@@ -1,16 +1,27 @@
+#The file gene_expression.tsv downloaded from the github repository.
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv", 
               destfile = "try.tsv")
+
+#Read the file with gene accession numbers as row numbers 
 x <- read.table("try.tsv", header = TRUE, row.names = 1)
+
+#Displaying the values of the first six genes
 head(x)
 
+#Making a new column which contains the mean of other columns
 x$Mean <- rowMeans(x)
+
+#Displaying the values of the first six genes
 head(x)
 
-nrow( subset(x, x$Mean<10))
-
+#Listing the 10 genes with highest mean expression
 ord <- x[order(-x$Mean),]
 head(ord,10)
 
+#Number of genes with a mean>10
+nrow( subset(x, x$Mean<10))
+
+#histogram plot of the means 
 x$Mean <- as.matrix(x)
 hist(x$Mean)
 hist(as.matrix(x$Mean),10)
