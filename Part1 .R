@@ -95,10 +95,32 @@ download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master
               destfile = "sample.fa")
 #Read the sample file into R
 d <- read.fasta("sample.fa")
-myseq <- d[[6]]
-myseq
+mygene <- d[[6]]
+mygene
 #Length of sequence in bp
-str(myseq)
-length(myseq)
+str(mygene)
+length(mygene)
 #Proportion of GC content
-seqinr::GC(myseq)
+seqinr::GC(mygene)
+
+#function to create blast
+download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part2_files/mutblast_functions.R",
+              destfile = "mutblast.R")
+source("mutblast.R")
+
+#Blast search for E. coli genes that matches best
+res <- myblastn_tab(myseq = mygene, db = "ecoli.fa")
+
+#Blast results
+res
+View(res)
+
+str(res)
+head(res)
+hits <- as.character(res$sseqid[1:3]) 
+hits
+
+#making mutations to mygene
+mygene_mutation <- mutator(mygene,20)
+res <- myblastn_tab(myseq = mygene_mutation, db = "ecoli.fa")
+res
