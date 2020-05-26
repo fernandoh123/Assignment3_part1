@@ -117,10 +117,68 @@ View(res)
 
 str(res)
 head(res)
-hits <- as.character(res$sseqid[1:3]) 
-hits
 
 #making mutations to mygene
 mygene_mutation <- mutator(mygene,20)
 res <- myblastn_tab(myseq = mygene_mutation, db = "ecoli.fa")
 res
+
+
+# test with 100 mismatches
+mygene_mutation <- mutator(myseq=mygene,100)
+res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
+res
+
+cointoss <- function(mygene_mutation) {
+  sample(c(0,1),1,replace = TRUE)
+}
+
+mean(replicate(100,cointoss(mygene_mutation)))
+
+#test with 150 mismatches
+mygene_mutation <- mutator(myseq=mygene,150)
+res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
+res
+
+cointoss <- function(mygene_mutation) {
+  sample(c(0,1),1,replace = TRUE)
+}
+
+mean(replicate(100,cointoss(mygene_mutation)))
+
+#test with 200 mismatches
+mygene_mutation <- mutator(myseq=mygene,200)
+res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
+res
+
+cointoss <- function(mygene_mutation) {
+  sample(c(0,1),1,replace = TRUE)
+}
+
+mean(replicate(100,cointoss(mygene_mutation)))
+
+#test with 250 mismatches
+mygene_mutation <- mutator(myseq=mygene,250)
+res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
+res
+
+cointoss <- function(mygene_mutation) {
+  sample(c(0,1),1,replace = TRUE)
+}
+
+mean(replicate(100,cointoss(mygene_mutation)))
+
+#test with 300 mismatches
+mygene_mutation <- mutator(myseq=mygene,450)
+res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
+res
+
+cointoss <- function(mygene_mutation) {
+  sample(c(0,1),1,replace = TRUE)
+}
+
+mean(replicate(100,cointoss(mygene_mutation)))
+
+plot(res$bitscore)
+
+?replicate
