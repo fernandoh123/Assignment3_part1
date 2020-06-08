@@ -3,29 +3,29 @@ download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master
               destfile = "try.tsv")
 
 #Read the file with gene accession numbers as row numbers 
-x <- read.table("try.tsv", header = TRUE, row.names = 1)
+a <- read.table("try.tsv", header = TRUE, row.names = 1)
 
 #Displaying the values of the first six genes
-head(x)
+head(a)
 
 #Making a new column which contains the mean of other columns
-x$Mean <- rowMeans(x)
+a$Mean <- rowMeans(a)
 
 #Displaying the values of the first six genes
-head(x)
+head(a)
 
 #Listing the 10 genes with highest mean expression
-ord <- x[order(-x$Mean),]
-head(ord,10)
+list <- a[order(-a$Mean),]
+head(list,10)
 
 #Number of genes with a mean>10
-nrow( subset(x, x$Mean<10))
+nrow( subset(a, a$Mean<10))
 
 #histogram plot of the means 
-x$Mean <- as.matrix(x)
-range(x$Mean)
-hist(x$Mean)
-hist(as.matrix(x$Mean),10, xlab = "Mean", breaks = 50, col = "blue", xlim = c(0,75000))
+a$Mean <- as.matrix(a)
+range(a$Mean)
+hist(a$Mean)
+hist(as.matrix(a$Mean),10, xlab = "Mean", breaks = 50, col = "blue", xlim = c(0,75000))
 
 
 #download file
@@ -181,4 +181,4 @@ mean(replicate(100,cointoss(mygene_mutation)))
 
 plot(res$bitscore)
 
-?replicate
+
