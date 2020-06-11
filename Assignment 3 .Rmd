@@ -75,7 +75,7 @@ The function `hist` was used to plot the histogram of Mean column of the data fr
 hist(x$Mean, ylab = "Frequency", xlab = "Mean", main = "Histogram Plot of Mean Values" , breaks = 50, col = "blue", xlim = c(0,300000))
 ```
 
-![alt text](http://118.138.234.73:8787/files/Assignment3_part1/Hist_Mean.png)
+![Histogram Plot of Mean Values](http://118.138.234.73:8787/files/Assignment3_part1/Hist_Mean.png)
 
 ### Q6. The file growth_data.csv downloaded from the github repository
 The file growth_data.csv that contains measurements for tree circumference growing at two sites; control site and treatment site which were planted 20 years ago was imported from [SLE712_files](https://github.com/markziemann/SLE712_files/tree/master/bioinfo_asst3_part1_files) resource page on 8 May 2020. The raw data can be accessed with this [link](https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/growth_data.csv) and destfile will show the path the file should be saved with the file name.
@@ -154,6 +154,8 @@ The function `t.test` performs two sample t test on growth over 10 years at both
 res <- t.test(GrowthSW,GrowthNE, var.equal = FALSE)
 res
 ```
+The t.test estimates a small p value indicating there is a big difference in the growth of trees at southwest and northeast in the past 10 years.
+According to the mean values southwest has a higher growth rate compared to northeast.
 
 The function `wilcox.test` performs two sample t test on growth over 10 years at both sites using the respective R objects with confidence level of 0.95 to estimate the p value. It is saved into res object.
 
@@ -161,6 +163,7 @@ The function `wilcox.test` performs two sample t test on growth over 10 years at
 res <- wilcox.test(GrowthSW,GrowthNE)
 res
 ```
+The wilcox test estimates a higher p value than t test and this might be due to stastical sensitivity of the two methods.
 
 # Part 2: Determine the limits of BLAST
 
@@ -314,16 +317,18 @@ mean(replicate(100,loop(mygene_mutation)))
 ```
 #### Test with 305 mismatches
 ```{r, chunk 38, echo=TRUE}
-mygene_mutation <- mutator(myseq=mygene,400)
+mygene_mutation <- mutator(myseq=mygene,305)
 res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
 res
 ```
 #### Test with 310 mismatches
 ```{r, chunk 39, echo=TRUE}
-mygene_mutation <- mutator(myseq=mygene,500)
+mygene_mutation <- mutator(myseq=mygene,310)
 res <- myblastn_tab(myseq = mygene_mutation, db = "mygene.fa")
 res
 ```
 
 ### Q6. Chart to show how mutation affects BLAST performance
-![alt text](http://118.138.234.73:8787/files/Assignment3_part1/BLAST%20plot.jpg)
+Graph was plotted to show how increasing number of random bases affects BLAST performance.
+![Graph of BLAST performance](http://118.138.234.73:8787/files/Assignment3_part1/BLAST%20plot.jpg)
+
