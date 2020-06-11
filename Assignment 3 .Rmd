@@ -19,7 +19,7 @@ Rstudio is an integrated development environment with a source pane; where the R
 
 ### Q1. The file gene_expression.tsv downloaded from the github repository
 
-To read in file, the file gene_expression.tsv that contains RNA-seq count data for two samples of intrest were imported from [SLE712_files](https://github.com/markziemann/SLE712_files/blob/master/bioinfo_asst3_part1_files/gene_expression.tsv) resource page on April 26 2020. The raw data file can be accessed by this [link](https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv) and destfile will show the path the file should be saved with the file name. 
+To read in file, the file gene_expression.tsv that contains RNA-seq count data for two samples of interest were imported from [SLE712_files](https://github.com/markziemann/SLE712_files/blob/master/bioinfo_asst3_part1_files/gene_expression.tsv) resource page on April 26 2020. The raw data file can be accessed by this [link](https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv) and destfile will show the path the file should be saved with the file name. 
 
 ```{r, chunk 1, echo=TRUE}
 download.file("https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/gene_expression.tsv", 
@@ -75,7 +75,7 @@ The function `hist` was used to plot the histogram of Mean column of the data fr
 hist(x$Mean, ylab = "Frequency", xlab = "Mean", main = "Histogram Plot of Mean Values" , breaks = 50, col = "blue", xlim = c(0,300000))
 ```
 
-![Histogram Plot of Mean Values](http://118.138.234.73:8787/files/Assignment3_part1/Hist_Mean.png)
+![](http://118.138.234.73:8787/files/Assignment3_part1/Hist_Mean.png)
 
 ### Q6. The file growth_data.csv downloaded from the github repository
 The file growth_data.csv that contains measurements for tree circumference growing at two sites; control site and treatment site which were planted 20 years ago was imported from [SLE712_files](https://github.com/markziemann/SLE712_files/tree/master/bioinfo_asst3_part1_files) resource page on 8 May 2020. The raw data can be accessed with this [link](https://raw.githubusercontent.com/markziemann/SLE712_files/master/bioinfo_asst3_part1_files/growth_data.csv) and destfile will show the path the file should be saved with the file name.
